@@ -1,0 +1,12 @@
+[
+{
+  "directory": "C:/Users/bensc/Documents/BHT/FS_VI/CPP/cpp_code/A3/build",
+  "command": "C:\\mingw64\\bin\\clang++.exe -g -std=gnu++17 -o CMakeFiles\\treemap.dir\\main.cpp.obj -c C:\\Users\\bensc\\Documents\\BHT\\FS_VI\\CPP\\cpp_code\\A3\\main.cpp",
+  "file": "C:\\Users\\bensc\\Documents\\BHT\\FS_VI\\CPP\\cpp_code\\A3\\main.cpp"
+},
+{
+  "directory": "C:/Users/bensc/Documents/BHT/FS_VI/CPP/cpp_code/A3/build",
+  "command": "C:\\mingw64\\bin\\clang++.exe -g -std=gnu++17 -o CMakeFiles\\treemap.dir\\payload.cpp.obj -c C:\\Users\\bensc\\Documents\\BHT\\FS_VI\\CPP\\cpp_code\\A3\\payload.cpp",
+  "file": "C:\\Users\\bensc\\Documents\\BHT\\FS_VI\\CPP\\cpp_code\\A3\\payload.cpp"
+}
+]

@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/hartmut/Desktop/2021-WS-C++/_Uebungen-WS2022/Code/A3-TreeMap-Loesung/treemap_v3/main.cpp
+iostream
+-
+string
+-
+assert.h
+/Users/hartmut/Desktop/2021-WS-C++/_Uebungen-WS2022/Code/A3-TreeMap-Loesung/treemap_v3/assert.h
+treemap.h
+/Users/hartmut/Desktop/2021-WS-C++/_Uebungen-WS2022/Code/A3-TreeMap-Loesung/treemap_v3/treemap.h
+payload.h
+/Users/hartmut/Desktop/2021-WS-C++/_Uebungen-WS2022/Code/A3-TreeMap-Loesung/treemap_v3/payload.h
+
+/Users/hartmut/Desktop/2021-WS-C++/_Uebungen-WS2022/Code/A3-TreeMap-Loesung/treemap_v3/payload.h
+memory
+-
+
+/Users/hartmut/Desktop/2021-WS-C++/_Uebungen-WS2022/Code/A3-TreeMap-Loesung/treemap_v3/treemap.h
+memory
+-
+iostream
+-
+utility
+-
+tuple
+-
+cassert
+-
+treemap_class.h
+/Users/hartmut/Desktop/2021-WS-C++/_Uebungen-WS2022/Code/A3-TreeMap-Loesung/treemap_v3/treemap_class.h
+
+/Users/hartmut/Desktop/2021-WS-C++/_Uebungen-WS2022/Code/A3-TreeMap-Loesung/treemap_v3/treemap_class.h
+
