@@ -27,12 +27,20 @@ namespace my
     void
     treemap<K, T>::clear()
     {
+        root_.reset();
+        size_ = 0;
     }
 
     // random read-only access to value by key
     template <typename K, typename T>
-    T treemap<K, T>::operator[](const K &) const
+    T treemap<K, T>::operator[](const K &key) const
     {
+        auto elemFound = find(key);
+        if (elemFound != end())
+        {
+            auto nodePointer = elemFound.nodePtr_.lock();
+            return nodePointer->data_.second;
+        }
         /* todo */ return T();
     }
 
@@ -218,8 +226,9 @@ namespace my
     size_t
     treemap<K, T>::count(const K &key) const
     {
-        auto foundElem = find(key);
-        if (foundElem != end())
+        auto elemFound = find(key);
+        // std::cout << typeid(foundElem).name() << std::endl;
+        if (elemFound != end())
         {
             return 1;
         }

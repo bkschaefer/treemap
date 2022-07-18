@@ -90,6 +90,9 @@ int main()
         // now implement find() and count() 
         cout << "count and find... " << endl;
 
+        cout << "m.count('Three'): " << m.count("Three") << endl;
+        // cout << "find Three: " << m.find("Three") << endl;
+
         // key "Three" should be found exactly once
         assert(m.count("Three") == 1);
 
@@ -127,7 +130,7 @@ int main()
     assert(Payload::count() == 0);
     cout << endl;
 
-#if 0
+
     {
         cout << "3. operator [] read/write..." << endl;
 
@@ -164,7 +167,7 @@ int main()
 
     assert(Payload::count() == 0);
     cout << endl;
-
+#if 0
     {
         cout << "4. begin(), end(), ++ ..." << endl;
 
