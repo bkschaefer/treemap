@@ -26,6 +26,7 @@ int main()
         treemap<string, Payload> m;
  
         // initially the map must be empty
+        // cout << m.size() << endl;
         assert(m.size() == 0); 
         // no Payload objects created
         assert(Payload::count() == 0);
@@ -45,6 +46,8 @@ int main()
         // inserting (key,value) pairs
         cout << "insert Three, " << Payload(3,3,3) << endl;
         auto [iter3,flag3] = m.insert("Three", Payload(3,3,3));
+
+
         assert(flag3 == true);
         assert(m.size() == 1);
 
@@ -82,7 +85,9 @@ int main()
             assert(was_inserted == false);
             assert(iter_three->second == Payload(3,4,5));
         }
-
+    }
+    // Klammer entfernen
+#if 0
         // now implement find() and count() 
         cout << "count and find... " << endl;
 
@@ -119,7 +124,7 @@ int main()
         cout << "done." << endl;
     }
 
-#if 0
+
     assert(Payload::count() == 0);
     cout << endl;
 

@@ -21,10 +21,11 @@ namespace my {
         std::shared_ptr<node> left_, right_;
         value_type data_;
 
-        treemap<K, T>::node(value_type vt, std::shared_ptr<node> parent = nullptr)
-            : parent_(parent), left_(nullptr), right_(nullptr), data_(vt)
-            {
-            }
+        node(value_type vt, std::shared_ptr<node> parent = nullptr)
+        : parent_(parent), left_(nullptr), right_(nullptr), data_(vt)
+        {
+        }
+            
     };
 
 

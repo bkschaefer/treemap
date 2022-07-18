@@ -110,6 +110,7 @@ namespace my
         else
         {
             auto current = root_;
+            // std::cout << "OUTPUT: " << typeid(current).name() << std::endl;
             while (current != nullptr)
             {
                 if (key < current->data_.first)
@@ -145,9 +146,10 @@ namespace my
                 // current->data_.first == key
                 else
                 {
-                    std::make_pair(iterator(current), false);
+                    return std::make_pair(iterator(current), false);
                 }
             }
+            return std::make_pair(iterator(current), false);
         }
     }
 
@@ -159,8 +161,18 @@ namespace my
     std::pair<typename treemap<K, T>::iterator, bool>
     treemap<K, T>::insert_or_assign(const K &key, const T &value)
     {
-        
-        /* todo */ return std::make_pair(iterator(), false);
+        auto [nodeIterator, wasInserted] = insert(key, value);
+        if(wasInserted)
+        {
+            return std::make_pair(nodeIterator, wasInserted);
+        }
+        else
+        {
+            auto current = nodeIterator.nodePtr_.lock();
+            // Wert überschreiben
+            current->data_.second = value;
+            return std::make_pair(iterator(current), false);
+        }
     }
 
     // find element with specific key. returns end() if not found.
