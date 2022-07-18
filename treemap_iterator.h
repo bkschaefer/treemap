@@ -100,7 +100,43 @@ namespace my {
         // note: must modify self!
         iterator& operator--()
         {
-            /* todo */ static iterator dummy; return dummy;
+            auto current = nodePtr_.lock();
+            while (current != nullptr)
+            {
+                if (current->left_ != nullptr)
+                {
+                    current = current->left_;
+
+                    while (current->right_ != nullptr)
+                    {
+                        current = current->right_;
+                    }
+                    nodePtr_ = std::weak_ptr<node>(current);
+                    return *this;
+                }
+                else
+                {
+                    auto parentPtr = current->parent_.lock();
+
+                    while (parentPtr != nullptr)
+                    {
+                        // checken ob es größeren parent gibt
+                        if (parentPtr->data_.first > current->data_.first)
+                        {
+                            parentPtr = parentPtr->parent_.lock();
+                        }
+                        // wenn ein höherer parent kleiner ist gebe diesen zurück
+                        else
+                        {
+                            nodePtr_ = std::weak_ptr<node>(parentPtr);
+                            return *this;
+                        }
+                    }
+                    // falls parent nullptr ist (uns es somit keinen gibt)
+                    return *this;
+                }
+            }
+            return *this;
         }
 
     }; // class iterator
