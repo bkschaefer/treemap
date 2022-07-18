@@ -47,10 +47,11 @@ namespace my
     // random write access to value by key
     template <typename K, typename T>
     T &
-    treemap<K, T>::operator[](const K &)
+    treemap<K, T>::operator[](const K &key)
     {
-        /* todo */ static T dummy;
-        return dummy;
+        auto [nodeIterator, wasInserted] = insert(key, T());
+        auto access = nodeIterator.nodePtr_.lock();
+        return access->data_.second;
     }
 
     // number of elements in map (nodes in tree)
@@ -89,7 +90,19 @@ namespace my
     typename treemap<K, T>::iterator
     treemap<K, T>::begin()
     {
-        /* todo */ return iterator();
+        auto current = root_;
+        while (current != nullptr)
+        {
+            if (current->left_ != nullptr)
+            {
+                current = current->left_;
+            }
+            else
+            {
+                return iterator(current);
+            }
+        }
+        return iterator(current);
     }
 
     // iterator referencing no element (node) in map
