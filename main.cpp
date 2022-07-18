@@ -132,6 +132,7 @@ int main()
     assert(Payload::count() == 0);
     cout << endl;
 
+#if 0
 
     {
         cout << "3. operator [] read/write..." << endl;
@@ -169,7 +170,9 @@ int main()
 
     assert(Payload::count() == 0);
     cout << endl;
-#if 0
+
+#endif
+
     {
         cout << "4. begin(), end(), ++ ..." << endl;
 
@@ -204,7 +207,7 @@ int main()
 
     assert(Payload::count() == 0);
     cout << endl;
-
+#if 0
     {
         cout << "5. iterator, -- ..." << endl;
 

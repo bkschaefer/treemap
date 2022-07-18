@@ -31,7 +31,7 @@ namespace my {
         // access data of referenced map element (node)
         value_type& operator*()
         {
-            /* todo */ static value_type dummy; return dummy;
+            return nodePtr_.lock()->data_;
         }
         value_type* operator->()
         {
@@ -41,21 +41,59 @@ namespace my {
         }
 
         // two iterators are equal if they point to the same node
-        bool operator==(const iterator&) const
+        bool operator==(const iterator&rhs) const
         {
-            /* todo */ return false;
+            auto thisPtr = nodePtr_.lock();
+            auto rhsPtr = rhs.nodePtr_.lock();
+            return thisPtr == rhsPtr;
         }
 
-        bool operator!=(const iterator&) const
+        bool operator!=(const iterator&rhs) const
         {
-            /* todo */ return false;
+           return !(*this == rhs);
         }
 
         // next element in map, pre-increment
         // note: must modify self!
         iterator& operator++()
         {
-            /* todo */ static iterator dummy; return dummy;
+            auto current = nodePtr_.lock();
+            while (current != nullptr)
+            {
+                // Gibt es rechten Knoten?
+                if (current->right_ != nullptr)
+                {
+                    current = current->right_;
+                    // Gibt es linken Knoten?
+                    while (current->left_ != nullptr)
+                    {
+                        current = current->left_;
+                    }
+                    nodePtr_ = std::weak_ptr<node>(current);
+                    return *this;
+                }
+                else // checke parent
+                {
+                    auto parentPtr = current->parent_.lock();
+                    while (parentPtr != nullptr)
+                    {
+                        // ist parent kleiner als current?
+                        if (parentPtr->data_.first < current->data_.first)
+                        {
+                            parentPtr = parentPtr->parent_.lock();
+                        }
+                        // wenn parent größer als current
+                        else 
+                        {
+                            nodePtr_ = std::weak_ptr<node>(parentPtr);
+                            return *this;
+                        }
+                    }
+                    // Falls es keinen parent gibt und parent daher nullptr ist
+                    *this = iterator(nullptr);
+                }
+            }
+            return *this;
         }
 
         // prev element in map, pre-decrement

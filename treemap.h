@@ -64,9 +64,10 @@ namespace my
 
     // move ctor
     template <typename K, typename T>
-    treemap<K, T>::treemap(treemap<K, T> &&)
+    treemap<K, T>::treemap(treemap<K, T> &&rhs)
+        : treemap()
     {
-        /* todo */
+        swap(*this, rhs);
     }
 
     // deep copy ctor
