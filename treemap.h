@@ -89,7 +89,7 @@ namespace my
     typename treemap<K, T>::iterator
     treemap<K, T>::end() const
     {
-        return iterator();
+        return iterator(nullptr);
     }
 
     // add a new element into the tree
@@ -210,14 +210,20 @@ namespace my
                 return iterator(current);
             }
         }
+        return end();
     }
 
     // how often is the element contained in the map?
     template <typename K, typename T>
     size_t
-    treemap<K, T>::count(const K &) const
+    treemap<K, T>::count(const K &key) const
     {
-        /* todo */ return 666;
+        auto foundElem = find(key);
+        if (foundElem != end())
+        {
+            return 1;
+        }
+        return 0;
     }
     // swap is overloaded in global namespace
     // see https://stackoverflow.com/questions/11562/how-to-overload-stdswap

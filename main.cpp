@@ -85,9 +85,8 @@ int main()
             assert(was_inserted == false);
             assert(iter_three->second == Payload(3,4,5));
         }
-    }
-    // Klammer entfernen
-#if 0
+
+
         // now implement find() and count() 
         cout << "count and find... " << endl;
 
@@ -128,7 +127,7 @@ int main()
     assert(Payload::count() == 0);
     cout << endl;
 
-
+#if 0
     {
         cout << "3. operator [] read/write..." << endl;
 
