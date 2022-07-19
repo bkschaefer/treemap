@@ -72,13 +72,36 @@ namespace my
     {
         swap(*this, rhs);
     }
-
+ 
     // deep copy ctor
     template <typename K, typename T>
     treemap<K, T>::treemap(const treemap<K, T> &rhs)
+        : root_(nullptr), size_(size_t())
     {
-        
+        if (rhs.root_ == nullptr)
+        {
+            return;
+        }
+        else
+        {
+            // *this = copyTree(rhs);
+            return;
+        }
     }
+
+    // treemap<K, T>::copyTree(const treemap<K, T> &rhs) 
+    // {
+    //     // 
+    //     insert(rhs.root_->data_.first, rhs.root_->data_.second);
+    //     auto current = root_;
+    //     auto rhsCurrent = rhs.root_;
+
+    //     // copy node in node klasse
+    //     // neuen node als kopie von sich selber erzeugen
+    //     // und methode rekursvi fdür kinder aufrufen
+    //     // 
+
+    // }
 
     // assignment (move & copy)
     template <typename K, typename T>
@@ -256,8 +279,12 @@ namespace my
     // (answer by Attention Mozza314)
     template <typename K, typename T>
     void
-    treemap<K, T>::swap(treemap<K, T> &, treemap<K, T> &)
+    treemap<K, T>::swap(treemap<K, T> &lhs, treemap<K, T> &rhs)
     {
+        auto temp = lhs.root_;
+        lhs.root_ = rhs.root_;
+        rhs.root_ = temp;
+        std::swap(lhs.size_, rhs.size_);
     }
 
 } // my::

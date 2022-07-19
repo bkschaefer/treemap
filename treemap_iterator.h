@@ -17,14 +17,13 @@ namespace my {
 
         // construct iterator referencing a specific node
         // - only treemap shall be allowed to do so
+        // root_ muss mit in den iterator 
         iterator(std::shared_ptr<treemap<K, T>::node> node = nullptr)
             : nodePtr_(node)
         {}
 
         // non-owning reference to the actual node
         std::weak_ptr<node> nodePtr_;
-        // std::weak_ptr<node> iterRoot_;
-        // bool isEnd_;
 
     public:
 

@@ -96,7 +96,7 @@ int main()
         // ---------------------------------------
         // ---------------------------------------
         // key "Three" should be found exactly once
-        // assert(m.count("Three") == 1);
+        assert(m.count("Three") == 1);
 
         // key "Four" should not be found
         assert(m.count("Four") == 0);
