@@ -75,17 +75,17 @@ namespace my
 
     // deep copy ctor
     template <typename K, typename T>
-    treemap<K, T>::treemap(const treemap<K, T> &)
+    treemap<K, T>::treemap(const treemap<K, T> &rhs)
     {
-        /* todo */
+        
     }
 
     // assignment (move & copy)
     template <typename K, typename T>
     treemap<K, T> &
-    treemap<K, T>::operator=(treemap<K, T>)
+    treemap<K, T>::operator=(treemap<K, T> rhs)
     {
-        /* todo, use copy&swap */
+        swap(*this, rhs);
         return *this;
     }
 
