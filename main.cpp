@@ -207,7 +207,7 @@ int main()
 
     assert(Payload::count() == 0);
     cout << endl;
-#if 0
+
     {
         cout << "5. iterator, -- ..." << endl;
 
@@ -221,10 +221,18 @@ int main()
 
         // iterator--
         cout << "iterating through list in reverse order:" << endl;
-        /* todo */
-        // while(...) {
-        //        cout << "  " << i->first << ": " << i->second << endl;
-        // }
+        auto i = --m.end();
+        while(i != m.end()) {
+            if (i == m.begin())
+            {
+               cout << "  " << i->first << ": " << i->second << endl;
+               i = m.end();
+            }
+            else
+            {
+                cout << "  " << i->first << ": " << i->second << endl;
+                --i;
+            }
         }
          
         // some bit of automatic testing in addition
@@ -265,7 +273,7 @@ int main()
     }        
     assert(Payload::count() == 0);
     cout << endl;
-
+#if 0
     {
         cout << "7. deep copy ..." << endl;
 

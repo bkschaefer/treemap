@@ -41,7 +41,10 @@ namespace my
             auto nodePointer = elemFound.nodePtr_.lock();
             return nodePointer->data_.second;
         }
-        /* todo */ return T();
+        else
+        {
+            return T();
+        }
     }
 
     // random write access to value by key
